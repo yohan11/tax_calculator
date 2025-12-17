@@ -9,11 +9,10 @@ def apply_discount(price, discount_percentage):
     # BUG: The previous developer subtracted the percentage number directly!
     # If price is 100 and discount is 20, this returns 80 (Correct accidentally).
     # But if price is 50 and discount is 20, this returns 30 (WRONG! Should be 40).
-    final_price = price - discount_percentage 
-    
-    if final_price < 0:
-        return 0.0
-    return final_price
+    final_price = price - (price *(discount_percentage/100))
+
+    if final_price > 0:
+        return final_price
 
 def calculate_tax(subtotal, tax_rate):
     """
@@ -21,4 +20,4 @@ def calculate_tax(subtotal, tax_rate):
     TODO: Implement this function.
     """
     # Currently returns 0, which is illegal!
-    return 0.0
+    return subtotal*tax_rate
